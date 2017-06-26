@@ -52,4 +52,27 @@
     echo ' miles = ';
     echo $kilo;
     echo ' km';
+
+    $name = 'Erik';
+    $string_one = 'Hello World';
+    $string_two = 'Hello $name';
+    //using double quotes allows variables to actually take on their value rather than just the variable name.
+    $string_three = "Hello $name";
+
+    echo $string_one;
+    echo $string_two;
+    echo $string_three;
+
+    echo "\r";
+    // \ is an escape character as with JS
+    $string_four = "Learning to display \"Hello $name\" to the screen. \n";
+    echo $string_four;
+
+    $string_five = 'Learning to display "Hello' . $name. '" to the screen.'. "\n";
+    echo $string_five;
+
+    $string_six = 'some text here';
+    $string_six .= ' some more text on another line';
+    $string_six .= ' as you can see.';
+    echo $string_six;
 ?>
