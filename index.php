@@ -79,6 +79,90 @@
 
 //            etc...
 
-    }
+
+    //notice that the array creation method is different calling array() instead of just [];
+    $learn = array('conditionals','arrays','loops');
+    var_dump($learn);
+    //still a key value pair with 0 index
+    echo $learn[1];
+    //this will output the array with whatever key you give it as first arguement and the array as the second.
+    echo implode(', ', $learn);
+    //this will add to the end of the array. without [] it will replace the actual variable
+    $learn[] = 'Build Something Awesome';
+    //push method but takes array as first argument and then what you want to add in. index of current array uneffected new item is +1
+    array_push($learn, 'Functions', 'Forms', 'Objects');
+    //unshift adds to beginning of the array. this will also reorder the index numbers with first item being 0 etc...
+    array_unshift($learn, 'HTML', 'CSS');
+    //removes first element from array, it gets returned not just removed
+    echo 'you removed ' . array_shift($learn);
+    //removes last element from array
+    echo 'you removed ' . array_pop($learn);
+    //unset allows you to remove elements from other parts of the array. you can unset entire array which will destroy it.
+    unset($learn[1], $learn[2]);
+    //creates a new array with the array values reindexed in order, so if the list needs to be cleaned this would allow
+    //you to update the index numbers.
+    $learn = array_values($learn);
+    //this allows you to change the value of a specific item in an array.
+    $learn[0] = 'Email';
+    //associative arrays
+    $iceCream = array(
+        'Alena'=>'Black Cherry',
+        'Treasure'=> 'Chocolate',
+        'Dave'=>'Cookies & Cream',
+        'Rialla'=>'Strawberry');
+    var_dump($iceCream);
+    echo $iceCream['Alena'];
+    //again array_values reorders the array, strips the original keys and replaces them in order 0...length of array-1
+    $iceCream2 = array_values($iceCream);
+    var_dump($iceCream2);
+    //keys are case sensitive so if you set your own keys they must match when being called. if you try to set a second element
+    //with the same key it will override the first. keys can be a string or integer. Floats will become an integer. booleans will
+    //be 1 for true and 0 for false. a number as a string will also be converted to an integer.
+    //this array will end up with only one item pointing to D because they will all be converted to 1 and that key will overwrite what
+    //came before it.
+    $keys = array(
+        1 => 'a',
+        '1' => 'b',
+        1.5 => 'c',
+        true => 'd'
+    );
+    var_dump($keys);
+
+    //notice that arrays can actually be made with the [] you don't have to use array();
+    $list[]= [
+        'title' => 'Laundry',
+        'priority' => 2,
+        'due' => '',
+        'complete' => true,
+    ];
+    $list[] = [
+        'title' => 'Clean Out Fridge',
+        'priority' => 3,
+        'due' => '7/30/17',
+        'complete' => false,
+    ];
+    var_dump($list);
+    //this will access $list and give the first array in it and access the title
+    echo $list[0]['title'];
+
+    //sorting arrays
+    //asort alphabetizes the values
+    asort($learn);
+    var_dump($learn);
+    //sort alone alphabetizes by value and updates index
+    sort($learn);
+    var_dump($learn);
+    //rsort reverses the order alphabetically.
+    rsort($learn);
+    var_dump($learn);
+    //shuffle randomly shuffles an array
+    shuffle($learn);
+    var_dump($learn);
+    //ksort krsort sort by key won't work if keys are letters and numbers
+    ksort($learn);
+    var_dump($learn);
+    krsort($learn);
+    var_dump($learn);
 
 ?>
+
