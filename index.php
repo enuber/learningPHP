@@ -164,5 +164,58 @@
     krsort($learn);
     var_dump($learn);
 
+    $currentYear = date('Y');
+    $year = $currentYear - 100;
+
+    while (++$year < $currentYear) {
+        echo $year . "<br />\n";
+    }
+
+    while (list($key, $val) = each($learn)) {
+        echo "$key => $val<br/>\n";
+    }
+
+    $player1 = 0;
+    $player2 = 0;
+    $round = 0;
+
+    while (abs($player1 - $player2) < 2 || ($player1 < 11 && $player2 < 11)) {
+        $round++;
+        echo "<h2>Round $round</h2>\n";
+        //gives a random number from a min to a max. as we are looking for zero or one, it can be
+        //used in an if statement as 0=false and 1=true
+        if(rand(0,1)) {
+            $player1++;
+        } else {
+            $player2++;
+        }
+        echo "Player 1 = $player1 <br/>\n";
+        echo "Player 2 = $player2 <br/> \n";
+    }
+    echo"<h1>";
+    if ($player1 > $player2) {
+        echo "Player 1 ";
+    } else {
+        echo "Player 2 ";
+    }
+    echo "is the winner after $round rounds.";
+    echo "</h1>";
+
+    $currentYear = date('Y');
+    $year = $currentYear - 100;
+
+    for ($year; $year <= $currentYear; $year++) {
+        echo $year . "<br/> \n";
+    }
+
+    $learn1[] = 'Build Something Awesome!';
+    array_push($learn1, 'Functions', 'Forms', 'Objects');
+    array_unshift($learn1, 'HTML', 'CSS');
+    asort($learn1);
+    sort($learn1);
+
+    for ($i = 0; $i < count($learn1); $i++) {
+        echo $learn1[$i] . "<br/> \n";
+    }
 ?>
 
