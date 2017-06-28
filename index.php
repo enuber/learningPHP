@@ -217,5 +217,8 @@
     for ($i = 0; $i < count($learn1); $i++) {
         echo $learn1[$i] . "<br/> \n";
     }
+
+    var_dump($list);
+
 ?>
 
