@@ -1,55 +1,86 @@
 <?php
-    echo 'hello world!';
 
-    $num_one = 1;
-    $num_two = 2;
-    $num_three = 3;
-    echo $num_one;
-    //var_dump tells you info about the data passed in. it is a function.
-    var_dump($num_one);
-    var_dump($num_one + $num_two - $num_three);
+function hello($arr)
+{
+    echo "<br/>";
+    if (is_array($arr)) {
+        foreach($arr as $name) {
+            echo "<br/>";
+            echo "hello, $name, how's it going";
+        }
+    } else {
+        echo "hello, $arr";
+    }
+}
+//allows for us to assign a default to an argument coming in similar to ES6
+//you can also set an arguement to Null which means it doesn't have to be included and, doesn't have a default
+function goodbye($name = 'friend') {
+    echo "<br/>";
+    echo "goodbye, $name, will see you later.";
+}
 
-    $distance_home = 1.2;
-    $distance_work = 2.5;
+function is_mike() {
+    global $currentUser;
+    echo "<br/>";
+    if ($currentUser == 'Mike') {
+        echo "It is Mike";
+    } else {
+        echo 'It is not Mike';
+    }
+}
 
-    //regardless if some variables are float and some are integers and the total is a whole number it is still a float because floats were
-    //used
-    var_dump($distance_home + $distance_work + $num_three + .3);
 
-    $a = 5;
-    $b = 10;
+hello('Erik');
+$currentUser = 'Mike';
+is_mike();
+hello($currentUser);
+$namesArray = array('George', 'Ringo', 'Bill', 'Marge');
+hello($namesArray);
+goodbye("mike");
+goodbye();
 
-    var_dump($a * $b);
-    var_dump($a/$b);
 
-    var_dump($a + 1);
-    var_dump($a);
-    $a++;
-    var_dump($a);
-    $a--;
-    var_dump($a);
+function greeting($name) {
+    if ($name) {
+        return "Hello, $name";
+    } else {
+        return "Hello, World";
+    }
+}
 
-    //number in pounds to convert to kg
-    //floating point value for pd to kg conversion
-    //then use the variables in the conversion formula to display
-    //will do the same for miles
+$greeting = greeting();
+echo "<br/>".$greeting;
+$greeting = greeting('Mike');
+echo "<br/>".$greeting;
 
-    $pound = 140;
-    $lb_to_kg = 0.453592;
-    $kg =  $pound * $lb_to_kg;
-    echo "Weight: ";
-    echo $pound;
-    echo "lb = ";
-    echo $kg;
-    echo ' kg';
+function addUp($a, $b) {
+    return $a + $b;
+}
+//NOTE: print_r will print keys and values of an array
+echo "<br/>" . addUp(2, 5);
 
-    $miles = 2.5;
-    $mile_to_kilo = 1.60934;
-    $kilo = $miles * $mile_to_kilo;
 
-    echo " Distance: ";
-    echo $miles;
-    echo ' miles = ';
-    echo $kilo;
-    echo ' km';
+//this is assigning a variable a string that matches a function name
+$func = 'hello';
+//now when we call it like a function with () it will call the hello() function
+$func();
+
+function answer() {
+    return 42;
+}
+
+$func = 'answer';
+echo $func();
+
+
+//anon function ends in a ; because it is assigned to a variable. If we want to use a global variable you can
+//also add in "use" and then another () that can take a variable.
+$name = 'friend';
+$yo = function() use ($name) {
+    echo "<br/> yo, $name";
+};
+
+$yo();
+
 ?>
+
