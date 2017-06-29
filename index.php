@@ -220,5 +220,46 @@
 
     var_dump($list);
 
+    echo "<br/>";
+    $status = 'all';
+    $field = 'title';
+    $order = array();
+    if ($status == 'all') {
+        //array_keys returns all the keys in a given array
+        $order = array_keys($list);
+    } else {
+        foreach ($list as $key => $item) {
+            if ($item['complete'] == $status) {
+                $order[] = $key;
+            }
+        }
+    }
+
+    if ($field) {
+        $sort = array();
+        foreach($order as $id) {
+            $sort[$id] = $list[$id][$field];
+        }
+        asort($sort);
+        $order = array_keys($sort);
+    }
+
+    echo '<table>';
+    echo '<tr>';
+    echo '<th>Title</th>';
+    echo '<th>Priority</th>';
+    echo '<th>Due date</th>';
+    echo '<th>Complete</th>';
+    echo '</tr>';
+    //foreach loop goes through items in an array first arguement is the array name, as, then a variable to hold the value
+    foreach($order as $id) {
+        echo '<tr>';
+        echo '<td>'.$list[$id]['title'].'</td>\n';
+        echo '<td>'.$list[$id]['priority'].'</td>\n';
+        echo '<td>'.$list[$id]['due'].'</td>\n';
+        echo '<td>'.$list[$id]['complete'].'</td>\n';
+        echo '</tr>';
+    }
+    echo '</table>';
 ?>
 
