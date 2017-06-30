@@ -82,5 +82,27 @@ $yo = function() use ($name) {
 
 $yo();
 
+echo "<br/> ";
+
+$phrase = 'we only hit what we aim for';
+echo strlen($phrase);
+
+echo "<br/> ";
+$name = [
+    "Mike" => "Frog",
+    "Chris" => "Teacher",
+    "Hamton" => "Teacher"
+];
+
+//foreach (array_keys($name) as $name) {
+//    echo "<br/> Hello, $name";
+//}
+
+function printInfo($val, $key) {
+    echo "<br/>$key is a $val";
+}
+
+array_walk($name, 'printInfo');
+
 ?>
 
